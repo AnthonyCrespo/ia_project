@@ -99,7 +99,7 @@ def get_model():
 
 def main():
     batch_size = 16
-    epochs = 50
+    epochs = 10
 
     save_dir = os.path.join(
         os.getcwd(),
@@ -108,7 +108,8 @@ def main():
     if not os.path.isdir(save_dir):
         os.makedirs(save_dir)
 
-    filepath = "saved_models/94482_23620_keras_cw_noDropOut_chexpert_pretrained_chexnet_1_{epoch:03d}_{val_loss:.5f}.h5"
+    #filepath = "saved_models/94482_23620_keras_cw_noDropOut_chexpert_pretrained_chexnet_1_{epoch:03d}_{val_loss:.5f}.h5"
+    filepath = "saved_models/94482_23620_keras_pretrained_chexnet_1_{epoch:03d}_{val_loss:.5f}.h5"
     checkpoint = ModelCheckpoint(
         filepath,
         monitor='val_loss',
@@ -119,7 +120,8 @@ def main():
     callbacks_list = [checkpoint]
 
     #new_model_name = '94482_23620_keras_chexpert_pretrained_chexnet_512_6_epochs_1.h5'
-
+    new_model_name = '94482_23620_keras_chexpert_pretrained_chexnet_512_10_epochs_1.h5'
+    
     base_model, model = get_model()
 
     # load old weights
@@ -129,6 +131,7 @@ def main():
 
     # print a model summary
     # print_summary(model)
+    #model.summary()
 
     csv_file_path = 'chexpert/train_94482_frontal_6_classes_real_no_zeros_preprocessed.csv'
     #train_df = pd.read_csv(csv_file_path)
@@ -165,11 +168,11 @@ def main():
                         use_multiprocessing=True)
 
     # Save model and weights
-    # if not os.path.isdir(save_dir):
-    #    os.makedirs(save_dir)
-    #model_path = os.path.join(save_dir, new_model_name)
-    # model.save(model_path)
-    #print('Saved trained model at %s ' % model_path)
+    if not os.path.isdir(save_dir):
+        os.makedirs(save_dir)
+    model_path = os.path.join(save_dir, new_model_name)
+    model.save(model_path)
+    print('Saved trained model at %s ' % model_path)
 
 
 if __name__ == '__main__':
