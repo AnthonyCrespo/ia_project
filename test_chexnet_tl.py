@@ -1,4 +1,4 @@
-from train_tCheXNet import get_model
+from train_chexnet import get_model
 from chexnet import chexnet_preprocess_input
 from preprocess import load_data_from_csv
 import os
