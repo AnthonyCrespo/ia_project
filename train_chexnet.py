@@ -122,7 +122,8 @@ def main():
     # print_summary(model)
     #model.summary()
 
-    csv_file_path = 'chexpert/train_94482_frontal_6_classes_real_no_zeros_preprocessed.csv'
+    #csv_file_path = 'chexpert/train_94482_frontal_6_classes_real_no_zeros_preprocessed.csv'
+    csv_file_path = 'chexpert/train'
     #train_df = pd.read_csv(csv_file_path)
 
     class_weight = get_class_weight(
@@ -135,7 +136,8 @@ def main():
         source_image_dir='./chexpert/',
         batch_size=batch_size)
 
-    csv_file_path = 'chexpert/train_23620_frontal_6_classes_real_no_zeros_preprocessed.csv'
+    #csv_file_path = 'chexpert/train_23620_frontal_6_classes_real_no_zeros_preprocessed.csv'
+    csv_file_path = 'chexpert/validation'
     #valid_df = pd.read_csv(csv_file_path)
 
     valid_generator = AugmentedImageSequence(
