@@ -8,9 +8,12 @@ from keras.callbacks import ModelCheckpoint
 import os
 import pandas as pd
 from generator import AugmentedImageSequence
-from test_CheXNet import target_classes
+#from test_CheXNet import target_classes
 #from weights import get_class_weights
 
+
+
+target_classes = ['Atelectasis']
 
 def get_class_weight(csv_file_path, target_class):
     df = pd.read_csv(csv_file_path)

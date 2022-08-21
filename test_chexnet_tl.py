@@ -3,12 +3,12 @@ from chexnet import chexnet_preprocess_input
 from preprocess import load_data_from_csv
 import os
 import pandas as pd
-from test_CheXNet import target_classes
+from train_chexnet import target_classes
 from sklearn.metrics import roc_auc_score
 #from sklearn.metrics import average_precision_score
 
 # For Mac users
-os.environ['KMP_DUPLICATE_LIB_OK']='True'
+#os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 
 def main():
