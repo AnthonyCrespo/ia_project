@@ -13,7 +13,7 @@ from generator import AugmentedImageSequence
 
 
 
-target_classes = ['Atelectasis']
+target_classes = ['Consolidation']
 
 def get_class_weight(csv_file_path, target_class):
     df = pd.read_csv(csv_file_path)
@@ -122,8 +122,7 @@ def main():
     # print_summary(model)
     #model.summary()
 
-    #csv_file_path = 'chexpert/train_94482_frontal_6_classes_real_no_zeros_preprocessed.csv'
-    csv_file_path = 'chexpert/train.csv'
+    csv_file_path = 'chexpert/train_94482_frontal_6_classes_real_no_zeros_preprocessed.csv'
     #train_df = pd.read_csv(csv_file_path)
 
     class_weight = get_class_weight(
@@ -136,8 +135,7 @@ def main():
         source_image_dir='./chexpert/',
         batch_size=batch_size)
 
-    #csv_file_path = 'chexpert/train_23620_frontal_6_classes_real_no_zeros_preprocessed.csv'
-    csv_file_path = 'chexpert/validation.csv'
+    csv_file_path = 'chexpert/train_23620_frontal_6_classes_real_no_zeros_preprocessed.csv'
     #valid_df = pd.read_csv(csv_file_path)
 
     valid_generator = AugmentedImageSequence(

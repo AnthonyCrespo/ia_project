@@ -18,7 +18,6 @@ def main():
     )
 
     model_name = '94482_23620_keras_cw_noDropOut_chexpert_pretrained_chexnet_512_1_001_0.54064.h5'
-    model_name = '94482_23620_keras_chexpert_pretrained_chexnet_10_epochs_1.h5'
     
     model_path = os.path.join(save_dir, model_name)
 

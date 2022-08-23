@@ -3,7 +3,7 @@ from chexnet import chexnet_preprocess_input
 from preprocess import load_data_from_csv
 import os
 import pandas as pd
-from test_CheXNet import target_classes
+from train_tCheXNet import target_classes
 from sklearn.metrics import roc_auc_score
 #from sklearn.metrics import average_precision_score
 
@@ -17,8 +17,7 @@ def main():
         'saved_models'
     )
 
-    #model_name = '94482_23620_keras_cw_noDropOut_chexpert_pretrained_chexnet_512_1_001_0.54064.h5'
-    model_name = '94482_23620_keras_chexpert_pretrained_chexnet_512_10_epochs_1.h5'
+    model_name = '94482_23620_keras_cw_noDropOut_chexpert_pretrained_chexnet_512_1_001_0.54064.h5'
     model_path = os.path.join(save_dir, model_name)
 
     base_model, model = get_model()

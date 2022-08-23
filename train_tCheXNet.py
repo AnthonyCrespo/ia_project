@@ -1,4 +1,3 @@
-
 from chexnet import get_chexnet_model
 from keras.layers import Input, Dense, Dropout
 #from keras.utils import print_summary
@@ -8,11 +7,21 @@ from keras.callbacks import ModelCheckpoint
 import os
 import pandas as pd
 from generator import AugmentedImageSequence
-from test_CheXNet import target_classes
+#from test_CheXNet import target_classes
 #from weights import get_class_weights
 
 # For Mac users
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
+
+target_classes = [
+    # 'Cardiomegaly',
+    # 'Edema',
+    # 'Consolidation',
+    # 'Pneumonia',
+    # 'Atelectasis',
+    'Pneumothorax'
+]
+
 
 """ def get_class_weight(csv_file_path, target_class):
     df = pd.read_csv(csv_file_path)
@@ -31,10 +40,6 @@ def get_class_weight(csv_file_path, target_class):
     total_counts = df.shape[0]
     class_weight = []
     for target_class in target_classes:
-        #weight_dict = {}
-        #weight_dict[0] = df.loc[(df[target_class] == 0)].shape[0] / total_counts
-        #weight_dict[1] = df.loc[(df[target_class] == 1)].shape[0] / total_counts
-        #class_weight.append(weight_dict)
         class_weight.append(df.loc[(df[target_class] == 0)].shape[0] / total_counts) 
         class_weight.append(df.loc[(df[target_class] == 1)].shape[0] / total_counts)
     

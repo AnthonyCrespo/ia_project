@@ -15,11 +15,6 @@ target_classes = [
     'Pneumothorax'
 ]
 
-target_classes = [
-    'Consolidation'
-]
-
-
 def main():
     # load data from csv
     csv_file_path = 'chexpert/valid_frontal_6_classes.csv'
