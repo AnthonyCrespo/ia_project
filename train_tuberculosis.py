@@ -13,7 +13,7 @@ from generator import AugmentedImageSequence
 
 
 
-target_classes = ['Consolidation']
+target_classes = ['Tuberculosis']
 
 def get_class_weight(csv_file_path, target_class):
     df = pd.read_csv(csv_file_path)
@@ -94,7 +94,7 @@ def main():
         os.makedirs(save_dir)
 
     #filepath = "saved_models/94482_23620_keras_cw_noDropOut_chexpert_pretrained_chexnet_1_{epoch:03d}_{val_loss:.5f}.h5"
-    filepath = "saved_models/94482_23620_keras_pretrained_chexnet_1_{epoch:03d}_{val_loss:.5f}.h5"
+    filepath = "saved_models/chexnet_tuberculosis_{epoch:03d}_{val_loss:.5f}.h5"
     checkpoint = ModelCheckpoint(
         filepath,
         monitor='val_loss',
@@ -105,7 +105,7 @@ def main():
     callbacks_list = [checkpoint]
 
     #new_model_name = '94482_23620_keras_chexpert_pretrained_chexnet_512_6_epochs_1.h5'
-    new_model_name = '94482_23620_keras_chexpert_pretrained_chexnet_10_epochs_1.h5'
+    new_model_name = 'chexnet_tuberculosis_10_epochs_1.h5'
     
     base_model, model = get_model()
 
@@ -118,7 +118,8 @@ def main():
     # print_summary(model)
     #model.summary()
 
-    csv_file_path = 'chexpert/train_94482_frontal_6_classes_real_no_zeros_preprocessed.csv'
+    #csv_file_path = 'chexpert/train_94482_frontal_6_classes_real_no_zeros_preprocessed.csv'
+    csv_file_path = 'dataset/train.csv'
     #train_df = pd.read_csv(csv_file_path)
 
     class_weight = get_class_weight(
@@ -128,16 +129,18 @@ def main():
     train_generator = AugmentedImageSequence(
         dataset_csv_file=csv_file_path,
         class_names=target_classes,
-        source_image_dir='./chexpert/',
+        source_image_dir='./dataset/',
         batch_size=batch_size)
 
-    csv_file_path = 'chexpert/train_23620_frontal_6_classes_real_no_zeros_preprocessed.csv'
+    #csv_file_path = 'chexpert/train_23620_frontal_6_classes_real_no_zeros_preprocessed.csv'
     #valid_df = pd.read_csv(csv_file_path)
+    csv_file_path = 'dataset/validation.csv'
+
 
     valid_generator = AugmentedImageSequence(
         dataset_csv_file=csv_file_path,
         class_names=target_classes,
-        source_image_dir='./chexpert/',
+        source_image_dir='./dataset/',
         batch_size=batch_size)
 
     STEP_SIZE_TRAIN = train_generator.steps
