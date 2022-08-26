@@ -3,7 +3,7 @@ from chexnet import chexnet_preprocess_input
 from preprocess_tuberculosis import load_data_from_csv
 import os
 import pandas as pd
-from train_chexnet import target_classes
+from train_tuberculosis import target_classes
 from sklearn.metrics import roc_auc_score
 #from sklearn.metrics import average_precision_score
 
